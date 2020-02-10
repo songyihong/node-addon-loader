@@ -46,7 +46,7 @@ module.exports = function(content) {
     finalUrl = '__webpack_public_path__ + ' + JSON.stringify(url)
   }
   if (config.relativePath) {
-    finalUrl = '__dirname + "/" + ' + finalUrl
+    finalUrl = process.platform !== 'win32' ? '__dirname + "/" + ' + finalUrl : '__dirname + "\\\\" + ' + finalUrl
   }
   return (
     'try { global.process.dlopen(module, ' +
